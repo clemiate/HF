@@ -15,28 +15,28 @@ import {
 // 菜单配置数据，便于集中管理和扩展
 const menuList = [
   { path: '/', name: '首页', icon: HomeFilled },
-  { path: '/sales-leads', name: '销售线索', icon: Tickets },
-  { path: '/customer', name: '客户管理', icon: User },
-  { path: '/product', name: '产品卡', icon: Goods },
-  { path: '/supplier', name: '供应商管理', icon: Van },
-  { path: '/purchase', name: '采购管理', icon: ShoppingCart },
+  { path: '/hf/sales-leads', name: '销售线索', icon: Tickets },
+  { path: '/hf/customer', name: '客户管理', icon: User },
+  { path: '/hf/product', name: '产品卡', icon: Goods },
+  { path: '/hf/supplier', name: '供应商管理', icon: Van },
+  { path: '/hf/purchase', name: '采购管理', icon: ShoppingCart },
   { 
-    path: '/business-line', 
+    path: '/hf/business-line', 
     name: '业务线管理', 
     icon: PriceTag,
     children: [
-      { path: '/business-line/community-group', name: '社区团购' },
-      { path: '/business-line/enterprise-floral', name: '企业花艺' },
-      { path: '/business-line/regional-delivery', name: '区域配送' },
+      { path: '/hf/business-line/community-group', name: '社区团购' },
+      { path: '/hf/business-line/enterprise-floral', name: '企业花艺' },
+      { path: '/hf/business-line/regional-delivery', name: '区域配送' },
       { 
-        path: '/business-line/floral-activity', 
+        path: '/hf/business-line/floral-activity', 
         name: '花艺活动',
         children: [
-          { path: '/business-line/floral-activity/salon', name: '插花沙龙' },
-          { path: '/business-line/floral-activity/parent-child', name: '亲子活动' },
-          { path: '/business-line/floral-activity/corporate', name: '企业活动' },
-          { path: '/business-line/floral-activity/community', name: '社区活动' },
-          { path: '/business-line/floral-activity/festival', name: '节庆活动' }
+          { path: '/hf/business-line/floral-activity/salon', name: '插花沙龙' },
+          { path: '/hf/business-line/floral-activity/parent-child', name: '亲子活动' },
+          { path: '/hf/business-line/floral-activity/corporate', name: '企业活动' },
+          { path: '/hf/business-line/floral-activity/community', name: '社区活动' },
+          { path: '/hf/business-line/floral-activity/festival', name: '节庆活动' }
         ]
       }
     ]

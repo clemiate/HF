@@ -10,45 +10,45 @@ const router = createRouter({
       component: HomeView
     },
     {
-      path: '/sales-leads',
+      path: '/hf/sales-leads',
       name: '销售线索',
       component: () => import('../views/sales-leads/SalesLeadsView.vue')
     },
     {
-      path: '/customer',
+      path: '/hf/customer',
       name: '客户管理',
       component: () => import('../views/customer/CustomerView.vue')
     },
     /* {
-      path: '/order',
+      path: '/hf/order',
       name: '订单管理',
       component: () => import('../views/order/OrderView.vue')
     }, */
     {
-      path: '/product',
+      path: '/hf/product',
       name: '产品卡',
       component: () => import('../views/product/ProductView.vue')
     },
     {
-      path: '/purchase',
+      path: '/hf/purchase',
       name: '采购管理',
       component: () => import('../views/purchase/PurchaseView.vue')
     },
     {
-      path: '/supplier',
+      path: '/hf/supplier',
       name: '供应商管理',
       component: () => import('../views/supplier/SupplierView.vue')
     },
     /* {
-      path: '/inventory',
+      path: '/hf/inventory',
       name: '库存管理',
       component: () => import('../views/inventory/InventoryView.vue')
     }, */
     {
-      path: '/business-line',
+      path: '/hf/business-line',
       name: '业务线管理',
       component: () => import('../views/business-line/BusinessLineView.vue'),
-      redirect: '/business-line/community-group', // 默认重定向到第一个子菜单
+      redirect: '/hf/business-line/community-group', // 默认重定向到第一个子菜单
       children: [
         {
           path: 'community-group',
@@ -69,12 +69,12 @@ const router = createRouter({
           path: 'floral-activity',
           name: '花艺活动',
           component: () => import('../views/business-line/BusinessFloralActivityView.vue'),
-          redirect: '/business-line/floral-activity/salon',
+          redirect: '/hf/business-line/floral-activity/community',
           children: [
             {
               path: 'salon',
               name: '插花沙龙',
-              component: () => import('../views/business-line/BusinessFloralSalonView.vue')
+              component: () => import('../views/business-line/BusinessFloralCommunityView.vue') // 由于移除了Salon文件，暂时复用CommunityView作占位，防止编译报错
             },
             {
               path: 'parent-child',

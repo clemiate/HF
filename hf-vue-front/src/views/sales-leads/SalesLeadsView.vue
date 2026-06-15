@@ -31,6 +31,21 @@ const pageSize = ref(10)
 const total = ref(0)
 const loading = ref(false)
 
+// 状态选项数组，收敛冗余代码
+const statusOptions = [
+  '待跟进', '跟进中', '建立联系', '待报价', '试运营', '合作中', '已转化', '价格未达成', '无效线索'
+]
+
+// 基础表格列配置
+const tableColumns = [
+  { prop: 'companyName', label: '公司名称', minWidth: '120', tooltip: true },
+  { prop: 'contactName', label: '联系人', width: '90' },
+  { prop: 'role', label: '职务', width: '100' },
+  { prop: 'phone', label: '联系电话', width: '120' },
+  { prop: 'source', label: '来源', width: '100' },
+  { prop: 'businessType', label: '业务类型', width: '100' }
+]
+
 // 模拟表格数据
 const tableData = ref<SalesLead[]>([])
 
@@ -208,15 +223,7 @@ onMounted(() => {
           </el-form-item>
           <el-form-item label="跟进状态">
             <el-select v-model="searchQuery.status" placeholder="请选择状态" clearable style="width: 150px">
-              <el-option label="待跟进" value="待跟进" />
-              <el-option label="跟进中" value="跟进中" />
-              <el-option label="建立联系" value="建立联系" />
-              <el-option label="待报价" value="待报价" />
-              <el-option label="试运营" value="试运营" />
-              <el-option label="合作中" value="合作中" />
-              <el-option label="已转化" value="已转化" />
-              <el-option label="价格未达成" value="价格未达成" />
-              <el-option label="无效线索" value="无效线索" />
+              <el-option v-for="status in statusOptions" :key="status" :label="status" :value="status" />
             </el-select>
           </el-form-item>
           <el-form-item>
@@ -233,12 +240,15 @@ onMounted(() => {
       <!-- 数据表格 -->
       <el-table v-loading="loading" :data="tableData" style="width: 100%" border stripe>
         <el-table-column prop="id" label="ID" width="60" align="center" />
-        <el-table-column prop="companyName" label="公司名称" min-width="120" show-overflow-tooltip />
-        <el-table-column prop="contactName" label="联系人" width="90" />
-        <el-table-column prop="role" label="职务" width="100" />
-        <el-table-column prop="phone" label="联系电话" width="120" />
-        <el-table-column prop="source" label="来源" width="100" />
-        <el-table-column prop="businessType" label="业务类型" width="100" />
+        <el-table-column
+          v-for="col in tableColumns"
+          :key="col.prop"
+          :prop="col.prop"
+          :label="col.label"
+          :width="col.width"
+          :min-width="col.minWidth"
+          :show-overflow-tooltip="col.tooltip"
+        />
         <el-table-column prop="status" label="状态" width="90" align="center">
           <template #default="scope">
             <el-tag :type="getStatusType(scope.row.status)">{{ scope.row.status }}</el-tag>
@@ -311,15 +321,7 @@ onMounted(() => {
           <el-col :span="12">
             <el-form-item label="状态" prop="status">
               <el-select v-model="formConfig.status" placeholder="请选择状态" style="width: 100%">
-                <el-option label="待跟进" value="待跟进" />
-                <el-option label="跟进中" value="跟进中" />
-                <el-option label="建立联系" value="建立联系" />
-                <el-option label="待报价" value="待报价" />
-                <el-option label="试运营" value="试运营" />
-                <el-option label="合作中" value="合作中" />
-                <el-option label="已转化" value="已转化" />
-                <el-option label="价格未达成" value="价格未达成" />
-                <el-option label="无效线索" value="无效线索" />
+                <el-option v-for="status in statusOptions" :key="status" :label="status" :value="status" />
               </el-select>
             </el-form-item>
           </el-col>
