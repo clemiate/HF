@@ -1,40 +1,79 @@
-# vue-frontend
+# HF-system
 
-This template should help get you started developing with Vue 3 in Vite.
+HF-system（卉枫鲜花业务系统）是面向鲜花零售与企业花艺服务场景的一体化业务管理平台。
 
-## Recommended IDE Setup
+系统围绕鲜花行业的销售、客户、订单与供应链管理构建，帮助花店、区域服务商及企业客户实现业务数字化运营，提高销售转化效率和供应链协同能力。
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## 业务场景
 
-## Type Support for `.vue` Imports in TS
+### 节日鲜花零售
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+支持节日营销活动、订单管理、客户维护及配送跟踪。
 
-## Customize configuration
+### 企业花艺服务
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+支持企业长期花艺服务、办公空间花艺布置及节庆活动用花管理。
 
-## Project Setup
+### 花艺活动
 
-```sh
-npm install
-```
+支持活动策划、花艺项目管理、客户沟通及执行跟踪。
 
-### Compile and Hot-Reload for Development
+### 区域鲜花配送
 
-```sh
-npm run dev
-```
+支持区域配送资源管理、订单调度及服务跟踪。
 
-### Type-Check, Compile and Minify for Production
+## 目标客户
 
-```sh
-npm run build
-```
+* 花店经营者
+* 鲜花品牌运营团队
+* 企业客户
+* 花艺工作室
+* 区域鲜花配送服务商
 
-### Lint with [ESLint](https://eslint.org/)
+## 核心功能模块
 
-```sh
-npm run lint
-```
-# HF
+### CRM 客户管理
+
+* 销售线索管理
+* 客户档案管理
+* 客户跟进记录
+* 商机转化管理
+
+### 销售与订单管理
+
+* 报价管理
+* 订单管理
+* 合同管理
+* 回款跟踪
+
+### 产品与品牌管理
+
+* 产品资料管理
+* SKU 管理
+* 品牌管理
+* 价格体系管理
+
+### 采购与供应链管理
+
+* 供应商管理
+* 采购订单管理
+* 库存协同
+* 成本管理
+
+### 配送服务管理
+
+* 配送区域管理
+* 配送任务管理
+* 服务状态跟踪
+
+## 项目结构
+
+HF-system/
+├── hf-vue-front/      # 前端系统
+├── hf-backend/        # 后端服务
+├── docs/              # 项目文档
+└── README.md
+
+## 项目愿景
+
+打造鲜花行业数字化业务平台，连接客户、订单、产品与供应链，实现从销售线索到交付服务的全流程管理。
