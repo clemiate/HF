@@ -50,7 +50,7 @@ const menuList = [
     <el-aside width="200px" class="aside">
       <div class="logo-container">
         <img class="sys-logo" src="@/assets/logo/logo.jpg" alt="logo" />
-        <h2 class="sys-title">卉枫业务系统</h2>
+        <h2 class="sys-title">卉枫源采 · 产品中心</h2>
       </div>
       <el-menu
         router

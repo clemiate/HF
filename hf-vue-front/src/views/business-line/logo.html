@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>卉枫源采 · 企业花艺名片 | 正反面可下载</title>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #e2ded5;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Segoe UI', 'Roboto', 'Noto Sans', system-ui, -apple-system, 'Helvetica Neue', '苹方', 'PingFang SC', '微软雅黑', sans-serif;
+            padding: 32px 20px;
+        }
+
+        /* ---------------------------
+           名片容器及通用样式
+        --------------------------- */
+        .cards-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            max-width: 900px;
+            margin-bottom: 36px;
+        }
+
+        .card {
+            width: 560px;
+            height: 340px; /* 固定高度，形成统一卡片比例 */
+            background: #F2F2ED;   /* 主背景色 — 柔和米白纸色 */
+            border-radius: 28px;
+            box-shadow: 0 20px 32px -12px rgba(0, 0, 0, 0.15), 0 2px 8px rgba(0, 0, 0, 0.04);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+        }
+
+        .card-inner {
+            height: 86%;
+            padding: 40px 32px;
+            display: flex;
+            flex-direction: row;
+        }
+
+        /* ---------------------------
+           正面专属样式
+        --------------------------- */
+        .card-front .card-inner {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            padding: 48px 32px;
+        }
+
+        .front-logo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            mix-blend-mode: multiply; /* 让白色背景与卡片底色柔和融合 */
+        }
+
+        .front-brand {
+            text-align: center;
+            margin: 16px 0;
+        }
+
+        .front-brand-name {
+            font-size: 34px;
+            font-weight: 650;
+            color: #2E5B3F;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .front-brand-sub {
+            font-size: 13px;
+            font-weight: 500;
+            color: #5F8B5D;
+            letter-spacing: 4px;
+        }
+
+        .front-qr-container {
+            width: fit-content;
+            height: fit-content;
+            background: #ffffff;
+            padding: 16px 16px 14px 16px;
+            border-radius: 20px;
+            border: 1px solid #E7E5DB;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .front-qr {
+            width: 110px;
+            height: 110px;
+            object-fit: contain;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .front-qr-text {
+            font-size: 12px;
+            font-weight: 500;
+            color: #5F8B5D;
+            letter-spacing: 0.5px;
+        }
+
+        /* ---------------------------
+           反面专属样式
+        --------------------------- */
+        .card-back .card-inner {
+            justify-content: space-between;
+        }
+
+        .back-content-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* 顶部枫叶装饰 */
+        .leaf-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+        .leaf-svg {
+            width: 30px;
+            height: 30px;
+            filter: drop-shadow(0 1px 1px rgba(0,0,0,0.05));
+        }
+        .leaf-line {
+            flex: 1;
+            height: 1.5px;
+            background: linear-gradient(90deg, #A6C39A, #F2F2ED);
+        }
+
+        /* 品牌区域 */
+        .brand {
+            margin-bottom: 24px;
+        }
+        .brand-name {
+            font-size: 32px;
+            font-weight: 650;
+            letter-spacing: 1px;
+            color: #2E5B3F;
+            line-height: 1.2;
+            display: flex;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        .leaf-icon-text {
+            font-size: 26px;
+            color: #F07A2A;
+            line-height: 1;
+        }
+        .brand-sub {
+            font-size: 13px;
+            font-weight: 480;
+            color: #5F8B5D;
+            letter-spacing: 1.2px;
+            border-left: 3px solid #F3A39A;
+            padding-left: 12px;
+            margin-top: 8px;
+        }
+
+        /* 温柔分隔线 */
+        .gentle-divider {
+            width: 48px;
+            height: 2px;
+            background: #D9D8CE;
+            margin: 0 0 24px 0;
+            border-radius: 2px;
+        }
+
+        /* 主文案 */
+        .poem-title {
+            font-size: 22px;
+            font-weight: 520;
+            color: #2E5B3F;
+            line-height: 1.4;
+            margin-bottom: 16px;
+        }
+        .poem-secondary {
+            font-size: 15px;
+            font-weight: 400;
+            color: #5F8B5D;
+            margin-bottom: 24px;
+            line-height: 1.6;
+            letter-spacing: 0.3px;
+        }
+        .weekly-note {
+            font-size: 13px;
+            color: #6D6B60;
+            background: #F9F9F4;
+            border: 1px solid #EAE8DF;
+            border-radius: 40px;
+            padding: 8px 16px;
+            display: inline-block;
+            margin-bottom: 12px;
+            font-weight: 450;
+        }
+        .neighbor-msg {
+            font-size: 14px;
+            color: #7A6E5D;
+            line-height: 1.5;
+            /* border-left: 2px solid #F3A39A; */
+            padding-left: 12px;
+        }
+
+        /* 底部小点缀 — 浦东本土标识 */
+        .local-badge {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            margin-top: auto;
+            font-size: 11px;
+            color: #A6C39A;
+            letter-spacing: 0.4px;
+        }
+        .local-dot {
+            width: 4px;
+            height: 4px;
+            background: #F07A2A;
+            border-radius: 50%;
+        }
+
+        /* ---------------------------
+           操作区及下载按钮
+        --------------------------- */
+        .action-panel {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .download-btn {
+            background: #2E5B3F;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 48px;
+            color: #F2F2ED;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.2s;
+            font-family: inherit;
+            box-shadow: 0 4px 12px rgba(46, 91, 63, 0.2);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .download-btn:hover {
+            background: #1F4230;
+            transform: scale(0.98);
+        }
+        .download-btn.secondary {
+            background: #5F8B5D;
+            box-shadow: 0 4px 12px rgba(95, 139, 93, 0.2);
+        }
+        .download-btn.secondary:hover {
+            background: #4A6E48;
+        }
+        .button-note {
+            text-align: center;
+            margin-top: 16px;
+            font-size: 12px;
+            color: #7f7c6e;
+            letter-spacing: 0.5px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- 名片展示区 (包含正反两面) -->
+<div class="cards-wrapper">
+    
+    <!-- ====== 正面 ====== -->
+    <div class="card card-front" id="cardFront">
+        <div class="card-inner">
+            <!-- 1. 品牌 Logo (取自当前目录的 logo.jpg) -->
+            <img class="front-logo" src="./logo.jpg" alt="卉枫源采 Logo">
+            
+            <!-- 2. 品牌名称 -->
+            <div class="front-brand">
+                <div class="front-brand-name">卉枫源采</div>
+                <div class="front-brand-sub">企业花艺 · 鲜花分享</div>
+            </div>
+
+            <!-- 3. 微信二维码 (取自当前目录的 code.png) -->
+       
+        </div>
+                    <!-- 底部：浦东本土标识 + 花礼点缀 -->
+            <div class="local-badge">
+                <span>🌱 浦东本土 · 焕发生机</span>
+                <div class="local-dot"></div>
+                <span>鲜花 · 桌花 · 花礼</span>
+            </div>
+    </div>
+
+    <!-- ====== 反面 ====== -->
+    <div class="card card-back" id="cardBack">
+        <div class="card-inner">
+            <div class="back-content-wrapper">
+                <!-- 顶部枫叶线条装饰 -->
+                <!-- <div class="leaf-header">
+                    <svg class="leaf-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L14 7L19 8L15 12L16 17L12 14.5L8 17L9 12L5 8L10 7L12 2Z" fill="#F07A2A" stroke="#F07A2A" stroke-width="1" stroke-linejoin="round"/>
+                        <path d="M12 5L13 8.5L16.5 9L14 11.5L14.5 15L12 13L9.5 15L10 11.5L7.5 9L11 8.5L12 5Z" fill="#F3A39A" stroke="#F3A39A" stroke-width="0.5"/>
+                    </svg>
+                    <div class="leaf-line"></div>
+                </div> -->
+
+                <!-- 品牌标志区 -->
+                <div class="brand">
+                    <div class="brand-name">
+                        <span>卉枫源采</span>
+                        <span class="leaf-icon-text">🌿</span>
+                    </div>
+                    <div class="brand-sub">企业花艺 · 鲜花分享</div>
+
+                    <div class="poem-title">把一束花带回家，<br>让生活多一点色彩</div>
+                </div>
+
+                <!-- <div class="gentle-divider"></div> -->
+
+                <!-- 温暖主文案 (社区温度) -->
+                
+
+                
+            </div>
+            <div>
+            <!-- <div class="weekly-note">🌸 本周鲜花已到 · 欢迎邻里交流</div> -->
+                    <div class="poem-secondary">每周鲜花展示 · 桌花花材定期更新<br>每一周都有不同的色彩与搭配。</div>
+
+                <div class="front-qr-container">
+                    <img class="front-qr" src="./code.png" alt="微信二维码">
+                    <div class="front-qr-text">📱 扫码添加微信</div>
+                </div>
+                <div class="neighbor-msg">🌸 喜欢鲜花的邻居，欢迎交流分享<br>一束花，一份自然生命力。</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 操作区 -->
+<div class="action-panel">
+    <button class="download-btn" onclick="downloadCardAsImage('cardFront', '名片_正面.png')">📸 保存正面</button>
+    <button class="download-btn secondary" onclick="downloadCardAsImage('cardBack', '名片_反面.png')">📸 保存反面</button>
+</div>
+<div class="button-note">点击按钮可分别下载名片正反面图片，便于分享或打印</div>
+
+<script>
+    async function downloadCardAsImage(cardId, fileName) {
+        const cardElement = document.getElementById(cardId);
+        if (!cardElement) return;
+        
+        try {
+            // 临时设置防止截图不全
+            const originalOverflow = cardElement.style.overflow;
+            cardElement.style.overflow = 'visible';
+            
+            const canvas = await html2canvas(cardElement, {
+                scale: 3,               // 3倍高清输出
+                backgroundColor: '#F2F2ED',
+                useCORS: true,          // 允许加载跨域/本地图片
+                allowTaint: true,
+                logging: false
+            });
+            
+            cardElement.style.overflow = originalOverflow;
+            
+            const link = document.createElement('a');
+            link.download = fileName;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        } catch (error) {
+            console.error('生成图片失败: ', error);
+            alert('生成失败。若是本地图片跨域受限，请尝试开启本地服务(Live Server)预览并下载。');
+        }
+    }
+</script>
+
+</body>
+</html>
